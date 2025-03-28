@@ -1,5 +1,6 @@
 "use client";
 
+import Card from "@/components/card";
 import { useState } from "react";
 
 export default function Home() {
@@ -18,14 +19,9 @@ export default function Home() {
         <button onClick={getOpenStatus} type="button" className="rounded-md bg-red-600 p-4 text-xl font-bold hover:cursor-pointer">Get Locations</button>
         {locationHours.length > 0 ? (
           <div>
-            <ul>
-              {locationHours.map((location: any) => (
-                <li key={location.id}>
-                  <strong>{location.name}</strong>:{" "}
-                  <span>{location.status.label}</span>
-                </li>
-              ))}
-            </ul>
+            {locationHours.map((location: any) => (
+              <Card name={location.name} label={location.status.label} color={location.status.color}/>
+            )) }
           </div>
         ) : (<p></p>)}
       </div>
